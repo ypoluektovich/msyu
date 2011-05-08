@@ -4,15 +4,30 @@ package ru.ypoluektovich.wizardry;
  * @author Yanus Poluektovich (ypoluektovich@gmail.com)
  */
 public class AbstractDefinitionMatcher implements DefinitionMatcher {
-	protected final StringBuilder text = new StringBuilder();
+	private int startPosition = -1;
+	private int endPosition = -1;
 
-	public boolean consumeChar(final int c)
+	public final boolean feedChar(final int c, final int pos)
 			throws InapplicableDefinitionException {
-		text.appendCodePoint(c);
+		if (startPosition == -1) {
+			startPosition = pos;
+		}
+		final boolean consumed = checkConsume(c, pos);
+		endPosition = pos + (consumed ? 1 : 0);
+		return consumed;
+	}
+
+	protected boolean checkConsume(final int c, final int pos) throws InapplicableDefinitionException {
 		return true;
 	}
 
-	public final String getMatchedText() {
-		return text.toString();
+	@Override
+	public int getStartPosition() {
+		return startPosition;
+	}
+
+	@Override
+	public int getEndPosition() {
+		return endPosition;
 	}
 }

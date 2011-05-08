@@ -3,7 +3,8 @@ package ru.ypoluektovich.wizardry;
 /**
  * @author Yanus Poluektovich (ypoluektovich@gmail.com)
  */
-public class NumberDefinition implements SyntaxDefinition {
+public class PlusDefinition implements SyntaxDefinition {
+	@Override
 	public DefinitionMatcher newMatcher() {
 		return new Matcher();
 	}
@@ -11,11 +12,13 @@ public class NumberDefinition implements SyntaxDefinition {
 	private class Matcher extends AbstractDefinitionMatcher {
 		@Override
 		protected boolean checkConsume(final int c, final int pos) throws InapplicableDefinitionException {
-			final boolean digit = Character.isDigit(c);
-			if (!digit && pos == getStartPosition()) {
+			if (getStartPosition() != pos) {
+				return false;
+			}
+			if (c != '+') {
 				throw new InapplicableDefinitionException();
 			}
-			return digit;
+			return true;
 		}
 	}
 }

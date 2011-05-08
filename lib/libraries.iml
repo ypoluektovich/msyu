@@ -16,6 +16,17 @@
         </SOURCES>
       </library>
     </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/idea-annotations/annotations.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/idea-annotations/src_annotations.zip!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>
 

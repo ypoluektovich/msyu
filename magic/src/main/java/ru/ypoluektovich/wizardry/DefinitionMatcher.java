@@ -4,6 +4,9 @@ package ru.ypoluektovich.wizardry;
  * @author Yanus Poluektovich (ypoluektovich@gmail.com)
  */
 public interface DefinitionMatcher {
-	boolean consumeChar(final int c) throws InapplicableDefinitionException;
-	String getMatchedText();
+	boolean feedChar(final int c, final int pos) throws InapplicableDefinitionException;
+
+	int getStartPosition();
+
+	int getEndPosition();
 }

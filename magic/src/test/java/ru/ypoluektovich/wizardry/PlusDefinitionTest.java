@@ -7,20 +7,21 @@ import java.io.IOException;
 /**
  * @author Yanus Poluektovich (ypoluektovich@gmail.com)
  */
-public class NumberDefinitionTest extends AbstractDefinitionTest {
+public class PlusDefinitionTest extends AbstractDefinitionTest {
 
-	public NumberDefinitionTest() {
-		super(new NumberDefinition());
+
+	public PlusDefinitionTest() {
+		super(new PlusDefinition());
 	}
 
 	@Test
-	public void testOneDigit() throws IOException, InapplicableDefinitionException {
-		runMatcher("1");
+	public void testPlus() throws IOException, InapplicableDefinitionException {
+		runMatcher("+");
 	}
 
-	@Test
-	public void testTwoDigits() throws IOException, InapplicableDefinitionException {
-		runMatcher("12");
+	@Test(expected = AssertionError.class)
+	public void testTwoPluses() throws IOException, InapplicableDefinitionException {
+		runMatcher("++");
 	}
 
 	@Test(expected = InapplicableDefinitionException.class)
